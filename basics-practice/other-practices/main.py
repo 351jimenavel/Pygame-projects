@@ -20,7 +20,12 @@ jugador_img = pygame.image.load('player.png')
 jugadorX = 370
 jugadorY = 480
 
+# variables para los cambios de posicion
+jugadorX_cambio = 0
+jugadorY_cambio = 0
+
 # 6. Movement of an object
+# 7. Keyboard input controls and key pressed event
 def jugador(x,y):
     # syntax: destination_surface.blit(source_surface, (x,y))
     screen.blit(jugador_img,(x, y))   # blit means 'to draw'
@@ -44,9 +49,19 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+        # if keystroke is pressed check whether its right or left
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                jugadorX_cambio = -0.2
+            if event.key == pygame.K_RIGHT:
+                jugadorX_cambio = 0.2
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                jugadorX_cambio = 0
 
-    # se hace el llamado despues del screen.fill porque ese es el 'lienzo' donde estara el jugador
-    jugador(jugadorX,jugadorY)
+    ## Sumar el cambio a la posicion actual del jugador
+    jugadorX += jugadorX_cambio
+    jugador(jugadorX,jugadorY)          # se hace el llamado despues del screen.fill porque ese es el 'lienzo' donde estara el jugador
 
     # Cada vez que se hagan cambios al game hay que actualizarlo
     pygame.display.update()     # !! importante
