@@ -7,6 +7,9 @@ pygame.init()
 ## 2. Set the height and width of the window screen as a tuple
 screen = pygame.display.set_mode((800,600))     # w,h
 
+## 11. Adding background image
+background = pygame.image.load('space-bg.png')
+
 ##### Events: anything that is happening inside the game window
 
 ## 3. Title and Icon
@@ -50,6 +53,8 @@ while running:
     # RGB: Red, Green, Blue
     screen.fill((0,0,50))
 
+    # Background image
+    screen.blit(background, (0,0))
     '''
     Movimiento manual
     jugadorX += 0.1
