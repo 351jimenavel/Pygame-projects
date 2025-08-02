@@ -36,7 +36,10 @@ enemigo_img = pygame.image.load('enemy.png')
 
 enemigoX = random.randint(0,800)
 enemigoY = random.randint(50,150)
-enemigoX_cambio = 0
+
+## 10. How the enemy moves
+enemigoX_cambio = 0.3
+enemigoY_cambio = 40
 
 def enemigo(x,y):
     screen.blit(enemigo_img,(x, y))
@@ -78,6 +81,15 @@ while running:
         jugadorX = 0
     elif jugadorX >= 736:       # 736 porque la imagen tiene 64px
         jugadorX = 736
+
+    ## 10. How the enemy moves
+    enemigoX += enemigoX_cambio
+    if enemigoX <= 0:
+        enemigoX_cambio = 0.3
+        enemigoY += enemigoY_cambio
+    elif enemigoX >= 736:
+        enemigoX_cambio = - 0.3
+        enemigoY += enemigoY_cambio
 
     jugador(jugadorX,jugadorY)          # se hace el llamado despues del screen.fill porque ese es el 'lienzo' donde estara el jugador
     enemigo(enemigoX, enemigoY)
