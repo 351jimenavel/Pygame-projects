@@ -24,3 +24,4 @@ while running:
     screen.fill((0,0,50))
     # Cada vez que se hagan cambios al game hay que actualizarlo
     pygame.display.update()     # !! importante
+    ###
