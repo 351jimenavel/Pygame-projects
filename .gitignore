@@ -1,0 +1,13 @@
+# Ignorar entornos virtuales
+venv/
+**/venv/
+basics-practice/other-practices/venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# VSCode y otros archivos del sistema
+*.log
+*.DS_Store
+.vscode/
